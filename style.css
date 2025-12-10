@@ -1,0 +1,43 @@
+:root{--primary:#6C63FF;--secondary:#8A84FF;--bg:#F7F8FC;--text:#1A1A1A;--text-light:#A1A1A1;--card:#FFFFFF;--border:#E2E3E7;--radius:16px;--soft-bg:#eaeaff;--soft-fg:#2b2b2b}
+body.dark{--bg:#0f1115;--text:#e6e7ea;--text-light:#a0a4ab;--card:#12141a;--border:#282b31;--soft-bg:#23233a;--soft-fg:#eaeaff}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif;background:var(--bg);color:var(--text)}
+main{padding:20px}
+.screen{display:none}
+.screen.active{display:block}
+.home-header{font-size:20px;font-weight:600;color:var(--text);margin-bottom:20px}
+.select-card{display:flex;flex-direction:column;align-items:center;justify-content:center;height:140px;border-radius:20px;background:linear-gradient(45deg,var(--primary),var(--secondary));color:#fff;margin-bottom:25px;cursor:pointer}
+.select-card .card-icon{font-size:40px}
+.select-card .card-label{margin-top:10px;font-size:16px}
+.section-title{font-size:16px;color:var(--text);margin:16px 0 8px}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+li{padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card)}
+.meta{display:flex;gap:16px;margin-top:8px;color:var(--text-light)}
+.reader-wrap{position:relative}
+.reader{white-space:pre-wrap;line-height:1.7;font-size:14px;padding:16px;border:1px solid var(--border);border-radius:12px;min-height:360px;background:var(--card);color:var(--text)}
+.fab{position:fixed;bottom:88px;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:35px;background:var(--primary);color:#fff;border:none;font-size:20px;box-shadow:0 10px 25px rgba(0,0,0,.15)}
+.drawer{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top-left-radius:20px;border-top-right-radius:20px;transform:translateY(70%);transition:transform .25s ease;box-shadow:0 -10px 30px rgba(0,0,0,.1)}
+.drawer-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:8px auto}
+.drawer-content{padding:14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+label{display:flex;flex-direction:column;gap:6px;font-size:13px}
+input[type="range"],select,input[type="text"]{width:100%;padding:10px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--text)}
+.player-ui{display:flex;flex-direction:column;align-items:center;gap:16px}
+.cover{width:120px;height:120px;border-radius:24px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:48px;margin-bottom:12px;color:var(--text)}
+.player-title{font-size:20px;font-weight:600}
+.player-controls{display:flex;gap:12px}
+button{padding:12px 16px;border-radius:16px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer}
+button.primary{background:var(--primary);color:#fff;border:none}
+button.secondary{background:var(--soft-bg);color:var(--soft-fg);border-color:var(--border)}
+button:disabled{opacity:.6;cursor:not-allowed}
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-around;padding:10px;border-top:1px solid var(--border);background:var(--card)}
+.now-playing{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:16px;background:var(--soft-bg);color:var(--soft-fg);cursor:pointer}
+.now-playing.playing .dot{background:var(--primary)}
+.now-playing.paused .dot{background:#999}
+.now-playing .dot{width:8px;height:8px;border-radius:4px;background:var(--primary);display:inline-block;animation:pulse 1.2s infinite}
+@keyframes pulse{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
+.player-ui.active-playing{outline:2px solid var(--primary);outline-offset:6px}
+.settings-list{display:flex;flex-direction:column;gap:12px}
+.switch-row{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text)}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

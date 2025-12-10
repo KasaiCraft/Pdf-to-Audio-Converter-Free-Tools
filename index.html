@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDF → Audio / Podcast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <input id="pdfInput" type="file" accept="application/pdf" style="display:none">
+  <main>
+    <section class="screen active" data-screen="home">
+      <div class="home-header">Convert PDF to Audio</div>
+      <div class="select-card" id="selectCard">
+        <div class="card-icon">📄</div>
+        <div class="card-label">Select PDF</div>
+      </div>
+      <div class="meta">
+        <div>Title: <span id="docTitle">—</span></div>
+        <div>Pages: <span id="docPages">0</span></div>
+      </div>
+      <div class="section-title">Recent Files</div>
+      <ul id="recentList"></ul>
+      <div class="section-title">Chapters</div>
+      <ul id="chaptersList"></ul>
+    </section>
+
+    <section class="screen" data-screen="reader">
+      <div class="reader-wrap">
+        <div class="reader" id="reader"></div>
+        <button class="fab" id="playButton">▶</button>
+        <div class="drawer" id="voiceDrawer">
+          <div class="drawer-handle" id="drawerHandle"></div>
+          <div class="drawer-content">
+            <div class="grid">
+              <label>Language
+                <select id="langSelect">
+                  <option value="en-US">English (US)</option>
+                  <option value="en-GB">English (UK)</option>
+                  <option value="hi-IN">Hindi (India)</option>
+                </select>
+              </label>
+              <label>Voice
+                <select id="voiceSelect"></select>
+              </label>
+              <label>Speed
+                <input id="rate" type="range" min="0.5" max="2" step="0.1" value="1">
+              </label>
+              <label>Pitch
+                <input id="pitch" type="range" min="0.5" max="2" step="0.1" value="1">
+              </label>
+              <label>Volume
+                <input id="volume" type="range" min="0" max="1" step="0.05" value="1">
+              </label>
+            </div>
+            <div class="reader-actions">
+              <button id="addBookmarkBtn">Add Bookmark</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="player">
+      <div class="player-ui" id="playerUi">
+        <div class="cover">🎧</div>
+        <div class="player-title" id="playerTitle">PDF Audio</div>
+        <input id="seekBar" type="range" min="0" max="100" step="1" value="0">
+        <div class="player-controls">
+          <button id="btnPlayPause">Play</button>
+        </div>
+        <input id="podcastTitle" type="text" placeholder="Title">
+        <button id="savePodcastBtn" class="primary">Save as Podcast</button>
+        <button id="exportAudio" disabled class="secondary">Export Audio</button>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="library">
+      <div class="section-title">Podcast Library</div>
+      <ul id="libraryList"></ul>
+    </section>
+
+    <section class="screen" data-screen="settings">
+      <div class="section-title">Settings</div>
+      <div class="settings-list">
+        <label class="switch-row">
+          <span>Dark Mode</span>
+          <input type="checkbox" id="darkToggle">
+        </label>
+      </div>
+    </section>
+  </main>
+  <nav class="bottom-nav">
+    <div class="now-playing paused" id="nowPlaying"><span id="nowPlayingIcon">▶</span><span class="dot"></span><span id="nowPlayingLabel">Paused</span></div>
+    <button data-target="home" id="navHome">Home</button>
+    <button data-target="library" id="navLibrary">Library</button>
+    <button data-target="settings" id="navSettings">Settings</button>
+  </nav>
+  <script src="app.js"></script>
+</body>
+</html>
+
